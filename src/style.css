@@ -1,0 +1,104 @@
+:root {
+  --bg: #e5e5e5;
+  --panel: #f3f3f3;
+  --display-bg: #222;
+  --text: #111;
+  --display-text: #fff;
+  --input-bg: #d3d3d3;
+  --input-bg-hover: #c0c0c0;
+  --operator-bg: #f2a311;
+  --operator-bg-hover: #e59400;
+  --submit-bg: #38c86c;
+  --submit-bg-hover: #32b15c;
+  --white: #fff;
+
+  --radius: 4px;
+  --gap: 6px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--bg);
+  font-family: Arial, sans-serif;
+}
+
+#calculator {
+  width: 360px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+
+  background: var(--panel);
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+#display {
+  height: 92px;
+  padding: 12px 14px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  background: var(--display-bg);
+  color: var(--display-text);
+  border-radius: var(--radius);
+
+  font-size: 2.5rem;
+}
+
+#button-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--gap);
+}
+
+#submit {
+  display: flex;
+}
+
+button {
+  border: none;
+  border-radius: var(--radius);
+  min-height: 68px;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.input-btn {
+  background: var(--input-bg);
+  color: var(--text);
+}
+
+.input-btn:hover {
+  background: var(--input-bg-hover);
+}
+
+.operator-btn {
+  background: var(--operator-bg);
+  color: var(--white);
+}
+
+.operator-btn:hover {
+  background: var(--operator-bg-hover);
+}
+
+.submit-btn {
+  width: 100%;
+  background: var(--submit-bg);
+  color: var(--white);
+  font-size: 2rem;
+}
+
+.submit-btn:hover {
+  background: var(--submit-bg-hover);
+}
