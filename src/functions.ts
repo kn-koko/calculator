@@ -63,14 +63,29 @@ export function updateInputState(state: CalculatorState, inputValue: Input): voi
 
 // 演算子ボタンが押されたときの状態更新関数。成功時は true、0 除算エラー時は false を返す。
 export function updateOperatorState(state: CalculatorState, operator: Operator): boolean {
-  // 演算子入力直後（第2オペランド待ち）: 演算子を上書きする
+  // 演算子入力直後（第2オペランド待ち）
   if (state.waitingForInput && state.firstOperand !== null) {
+    if (operator === "-") {
+      // "-" は負の第2オペランドの符号として入力する
+      state.waitingForInput = false;
+      state.displayValue = "-";
+      return true;
+    }
+    // "-" 以外の演算子: 演算子を上書きする
     state.operator = operator;
     return true;
   }
 
-  // 数値が未入力: マイナス記号のみ負の数の符号として許可する
+  // 数値が未入力の場合
   if (state.displayValue === "" || state.displayValue === "-") {
+    // 第2オペランドの符号（"-"）入力中に演算子が押された場合: 演算子を上書きして第2オペランド待ち状態へ戻す
+    if (state.firstOperand !== null) {
+      state.operator = operator;
+      state.displayValue = formatResult(state.firstOperand);
+      state.waitingForInput = true;
+      return true;
+    }
+    // 第1オペランド未入力の場合: マイナス記号のみ符号として許可する
     if (operator === "-") {
       state.displayValue = "-";
     }
