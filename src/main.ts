@@ -28,8 +28,8 @@ function main() {
         return;
       }
 
-      // 未入力の状態で 0 を入力しても何もしない
-      if (inputValue === "0" && displayValue === "") {
+      // 既に0が入力されている状態で0を入力しても何もしない
+      if (inputValue === "0" && displayValue === "0") {
         return;
       }
 

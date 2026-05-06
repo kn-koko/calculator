@@ -4,6 +4,11 @@ export function getDisplay(
 ): string {
   let result: string;
 
+  // 0 が表示されている場合は、押されたボタンで上書きする
+  if (current === "0") {
+    return pressed;
+  }
+
   const currentWithoutDecimalPoint = current.replace(".", "");
 
   // current は 小数点を除いて7桁以下か？
